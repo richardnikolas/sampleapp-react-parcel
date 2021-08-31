@@ -1,0 +1,149 @@
+:root {
+  --primary-blue: #0c163d;
+  --primary-orange: #e26b00;
+  --primary-yellow: #f4c500;
+  --delay: 700ms;
+  --cubic: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.hero-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+  color: whitesmoke;
+  background-size: cover;
+  background-color: whitesmoke;
+  background-position: center;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 600px) {
+  .hero-card {
+    height: 370px;
+ }
+}
+
+.hero-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-size: cover;
+  background-position: 0 0;
+  transition: transform calc(var(--delay) * 1.5) var(--cubic);
+  pointer-events: none;
+}
+
+.hero-card:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  pointer-events: none;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.320) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.540) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.790) 100%);
+  transform: translateY(-50%);
+  transition: transform calc(var(--delay) * 2) var(--cubic);
+}
+
+.hero-card-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  transition: transform var(--delay) var(--cubic);
+  z-index: 1;
+  color: #fff;
+}
+
+.hero-card-content > * + * {
+  margin-top: 1rem;
+}
+
+.hero-card-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 1.2;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+
+.hero-card-description {
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 0.9rem;
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+  max-height: 130px;
+  opacity: 0;
+}
+
+/* .hero-card-btn {
+  cursor: pointer;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.65rem;
+  font-weight: bold;
+  letter-spacing: 0.025rem;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  opacity: 0;
+}
+.hero-card-btn:hover {
+  background-color: #0d0d0d;
+}
+.hero-card-btn:focus {
+  outline: 1px dashed var(--primary-yellow);
+  outline-offset: 3px;
+} */
+
+@media (hover: hover) and (min-width: 600px) {
+  .hero-card:after {
+    transform: translateY(0);
+ }
+  .hero-card-content {
+    transform: translateY(calc(100% - 4.5rem));
+ }
+  .hero-card-content > *:not(.name) {
+    transform: translateY(1rem);
+    transition: transform var(--delay) var(--cubic), opacity var(--delay) var(--cubic);
+ }
+  .hero-card:hover, .hero-card:focus-within {
+    align-items: center;
+    text-decoration: none;
+ }
+  .hero-card:hover:before, .hero-card:focus-within:before {
+    transform: translateY(-4%);
+ }
+  .hero-card:hover:after, .hero-card:focus-within:after {
+    transform: translateY(-50%);
+ }
+  .hero-card:hover .hero-card-content, .hero-card:focus-within .hero-card-content {
+    transform: translateY(0);
+ }
+  .hero-card:hover .hero-card-content > *:not(.name), .hero-card:focus-within .hero-card-content > *:not(.name) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--delay) / 8);
+ }
+  .hero-card:hover .hero-card-name, .hero-card:focus-within .hero-card-name {
+    background-color: transparent;
+ }
+  .hero-card:focus-within:before, .hero-card:focus-within:after, .hero-card:focus-within .hero-card-content, .hero-card:focus-within .hero-card-content > *:not(.name) {
+    transition-duration: 0s;
+ }
+}
