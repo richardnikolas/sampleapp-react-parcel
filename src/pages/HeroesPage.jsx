@@ -56,13 +56,11 @@ const HeroesPage = () => {
   const offset = currentPage * PER_PAGE;
   const pageCount = Math.ceil(heroesData.length / PER_PAGE);
 
-  console.log('heroesData', heroesData);
-
   return (
     <Grid container justifyContent="center" direction="column" className={classes.container}>
       <Grid item xs={12} className={classes.textWrapper}>
         <h1 className={classes.mainText}>
-          Welcome to the <span style={{ color: '#dedc47' }}>Heroes</span> Page!
+          Welcome to the <span style={{ color: '#e8e108' }}>Heroes</span> Page!
         </h1>
       </Grid>
 
